@@ -4,11 +4,11 @@ import com.epam.tat.module4.Calculator;
 import org.testng.annotations.BeforeMethod;
 
 public class CalculatorTesting {
-    private static Calculator calculator;
+    protected Calculator calculator;
 
     @BeforeMethod(alwaysRun = true)
-    public static Calculator initCalc() {
-        return calculator = new Calculator();
+    public void initCalc() {
+        calculator = new Calculator();
     }
 
 }
