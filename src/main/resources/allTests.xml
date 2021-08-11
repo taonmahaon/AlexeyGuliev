@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "AllTests">
+
+  <test name = "addTest">
+    <classes>
+      <class name = "com.epam.tc.hw1.AddOperationTest" />
+    </classes>
+  </test>
+
+  <test name = "Sub">
+    <classes>
+      <class name = "com.epam.tc.hw1.SubOperationTest" />
+    </classes>
+  </test>
+
+  <test name = "multiplyTest">
+    <classes>
+      <class name = "com.epam.tc.hw1.MultiplyOperationTest" />
+    </classes>
+  </test>
+
+  <test name = "divTest">
+    <classes>
+      <class name = "com.epam.tc.hw1.DivideOperationTest" />
+    </classes>
+  </test>
+
+</suite>
