@@ -51,6 +51,9 @@
         </profile>
         <profile>
             <id>homeWork2</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <suiteFile>src/main/resources/testngHw2.xml</suiteFile>
             </properties>
