@@ -1,6 +1,7 @@
 package com.epam.tc.hw2;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import java.util.List;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,19 @@ public class BaseSiteTestData {
     protected WebDriverWait wait;
     protected String name;
     protected String password;
+
+    protected static final List<String> HEADER_EXPECTED_TEXT = List.of(
+        "HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
+
+    protected static final List<String> BENEFIT_EXPECTED_TEXT = List.of(
+        "To include good practices\nand ideas from successful\nEPAM project",
+        "To be flexible and\ncustomizable",
+        "To be multiplatform",
+        "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…"
+    );
+
+    protected static final List<String> SIDEBAR_EXPECTED_TEXTS = List.of(
+        "Home", "Contact form", "Service", "Metals & Colors", "Elements packs");
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {

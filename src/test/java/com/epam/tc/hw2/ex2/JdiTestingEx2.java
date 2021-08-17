@@ -27,10 +27,10 @@ public class JdiTestingEx2 extends BaseSiteTestData {
 
         // 5. Open through the header menu Service -> Different Elements Page
         wait.until(ExpectedConditions.elementToBeClickable(
-            webDriver.findElement(By.xpath("//ul[@class='uui-navigation nav navbar-nav m-l8'][1]/li[3]")))).click();
+            webDriver.findElement(By.xpath("//span[contains(.,'Service')]")))).click();
         webDriver.switchTo().activeElement();
         wait.until(ExpectedConditions.elementToBeClickable(
-            webDriver.findElement(By.xpath("//a[contains(text(),'Different elements')]")))).click();
+            webDriver.findElement(By.xpath("//span[contains(.,'Different elements')]")))).click();
 
         // 6. Select checkboxes
         wait.until(ExpectedConditions.elementToBeClickable(
