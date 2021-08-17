@@ -21,31 +21,42 @@
         <calculator.version>1.0</calculator.version>
         <assertj-core.version>3.20.2</assertj-core.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
+        <webdrivermanager.version>4.4.3</webdrivermanager.version>
+        <slf4j-api.version>1.7.32</slf4j-api.version>
+        <slf4j-simple.version>1.7.21</slf4j-simple.version>
+        <slf4j-log4j12.version>1.7.5</slf4j-log4j12.version>
     </properties>
     <profiles>
         <profile>
             <id>defaultAddSubProfile</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+<!--            <activation>-->
+<!--                <activeByDefault>true</activeByDefault>-->
+<!--            </activation>-->
             <properties>
             <suiteFile>src/main/resources/addSub.xml</suiteFile>
             </properties>
-
         </profile>
         <profile>
             <id>multiplyDivProfile</id>
             <properties>
                 <suiteFile>src/main/resources/multiplyDiv.xml</suiteFile>
             </properties>
-
         </profile>
         <profile>
             <id>allTestsProfile</id>
             <properties>
                 <suiteFile>src/main/resources/allTests.xml</suiteFile>
             </properties>
-
+        </profile>
+        <profile>
+            <id>homeWork2</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suiteFile>src/main/resources/testngHw2.xml</suiteFile>
+            </properties>
         </profile>
     </profiles>
     <dependencies>
@@ -68,6 +79,32 @@
             <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+<!--    TODO later. Throws the error SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder". Does not affect work yet. Need to smoke manual http://www.slf4j.org/codes.html#StaticLoggerBinder -->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-api</artifactId>-->
+<!--            <version>${slf4j-api.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-log4j12</artifactId>-->
+<!--            <version>${slf4j-log4j12.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-simple</artifactId>-->
+<!--            <version>${slf4j-simple.version}</version>-->
+<!--        </dependency>-->
     </dependencies>
     <build>
         <plugins>
