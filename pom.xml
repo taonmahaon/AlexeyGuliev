@@ -51,11 +51,17 @@
         </profile>
         <profile>
             <id>homeWork2</id>
+            <properties>
+                <suiteFile>src/main/resources/testngHw2.xml</suiteFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>homeWork3</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suiteFile>src/main/resources/testngHw2.xml</suiteFile>
+                <suiteFile>src/main/resources/testngHw3.xml</suiteFile>
             </properties>
         </profile>
     </profiles>
@@ -151,6 +157,6 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>
 
+    </build>
 </project>
