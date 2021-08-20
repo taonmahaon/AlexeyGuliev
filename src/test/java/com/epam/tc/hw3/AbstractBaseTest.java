@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-public class TestDataHw3 extends Constants {
+public class AbstractBaseTest {
 
     protected WebDriver webDriver;
     protected SoftAssertions softAssertions;

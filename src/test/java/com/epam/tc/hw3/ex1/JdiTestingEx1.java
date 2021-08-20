@@ -1,47 +1,57 @@
 package com.epam.tc.hw3.ex1;
 
-import com.epam.tc.hw3.TestDataHw3;
+import static com.epam.tc.hw3.Constants.BENEFIT_EXPECTED_TEXT;
+import static com.epam.tc.hw3.Constants.HEADER_EXPECTED_TEXT;
+import static com.epam.tc.hw3.Constants.SIDEBAR_EXPECTED_TEXTS;
+import static com.epam.tc.hw3.Constants.URL;
+
+import com.epam.tc.hw3.AbstractBaseTest;
 import com.epam.tc.hw3.pages.HomePage;
+import com.epam.tc.hw3.steps.BaseJdiTestingPageSteps;
+import com.epam.tc.hw3.steps.HomePageSteps;
 import org.testng.annotations.Test;
 
-public class JdiTestingEx1 extends TestDataHw3 {
+public class JdiTestingEx1 extends AbstractBaseTest {
     @Test
     public void softAssertsTestEx1() {
 
-        final HomePage homePage = new HomePage(webDriver, wait, softAssertions);
+        final HomePageSteps homePageSteps = new HomePageSteps(webDriver, wait);
+        final HomePage homePage = new HomePage(webDriver, wait);
+        final BaseJdiTestingPageSteps baseJdiTestingPageSteps = new BaseJdiTestingPageSteps(webDriver, wait);
+
 
         // 1. Open test site by URL
         homePage.openSiteByUrl(URL);
 
         // 2. Assert Browser title
-        homePage.assertBrowserTitle("Home Page");
+        baseJdiTestingPageSteps.assertBrowserTitle("Home Page");
 
         // 3. Perform login
         homePage.login();
 
         // 4. Assert Username is logged in
-        homePage.assertUsernameLoggedIn("ROMAN IOVLEV");
+        baseJdiTestingPageSteps.assertUsernameLoggedIn("ROMAN IOVLEV");
 
         // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
-        homePage.assertHeaderSection(4, HEADER_EXPECTED_TEXT);
+        baseJdiTestingPageSteps.assertHeaderSection(4, HEADER_EXPECTED_TEXT);
 
         // 6. Assert that there are 4 images on the Index Page and they are displayed
-        homePage.assertBenefitImages(4);
+        homePageSteps.assertBenefitImages(4);
 
         // 7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        homePage.assertBenefitTexts(BENEFIT_EXPECTED_TEXT);
+        homePageSteps.assertBenefitTexts(BENEFIT_EXPECTED_TEXT);
 
         // 8. Assert that there is the iframe with “Frame Button” exist
-        homePage.assertFrameExist();
+        homePageSteps.assertFrameExist();
 
         // 9. Switch to the iframe and check that there is “Frame Button” in the iframe
-        homePage.assertButtonExist();
+        homePageSteps.assertButtonExist();
 
         // 10. Switch to original window back
         homePage.switchToOriginalWindow();
 
         // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
-        homePage.assertLeftMenu(5, SIDEBAR_EXPECTED_TEXTS);
+        baseJdiTestingPageSteps.assertLeftMenu(5, SIDEBAR_EXPECTED_TEXTS);
 
         softAssertions.assertAll();
     }

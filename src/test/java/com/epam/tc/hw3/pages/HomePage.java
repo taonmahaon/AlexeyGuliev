@@ -2,7 +2,6 @@ package com.epam.tc.hw3.pages;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,8 +22,8 @@ public class HomePage extends BaseJdiTestingPage {
     @FindBy(xpath = "//input[@value='Frame Button']")
     private WebElement frameButton;
 
-    public HomePage(WebDriver driver, WebDriverWait wait, SoftAssertions softAssertions) {
-        super(driver, wait, softAssertions);
+    public HomePage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
     }
 
     public List<WebElement> getBenefitImages() {
@@ -44,22 +43,6 @@ public class HomePage extends BaseJdiTestingPage {
     public Boolean frameButtonDisplayed() {
         driver.switchTo().frame("frame");
         return frameButton.isDisplayed();
-    }
-
-    public void assertBenefitImages(int numberOfImages) {
-        softAssertions.assertThat(getBenefitImages().size()).isEqualTo(numberOfImages);
-    }
-
-    public void assertBenefitTexts(List<String> properTexts) {
-        softAssertions.assertThat(getBenefitTexts()).isEqualTo(properTexts);
-    }
-
-    public void assertFrameExist() {
-        softAssertions.assertThat((getFrameCard()).isDisplayed()).isTrue();
-    }
-
-    public void assertButtonExist() {
-        softAssertions.assertThat(frameButtonDisplayed()).isTrue();
     }
 
     public void switchToOriginalWindow() {

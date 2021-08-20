@@ -1,12 +1,8 @@
 package com.epam.tc.hw3.pages;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import com.epam.tc.hw3.utils.Utilities;
 import java.util.List;
-import java.util.Properties;
 import java.util.stream.Collectors;
-import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,14 +14,6 @@ public class BaseJdiTestingPage {
 
     protected final WebDriver driver;
     protected final WebDriverWait wait;
-    protected final SoftAssertions softAssertions;
-
-    public BaseJdiTestingPage(WebDriver driver, WebDriverWait wait, SoftAssertions softAssertions) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-        this.wait = wait;
-        this.softAssertions = softAssertions;
-    }
 
     @FindBy(id = "user-icon")
     private WebElement userIcon;
@@ -54,22 +42,23 @@ public class BaseJdiTestingPage {
     @FindBy(xpath = "//span[contains(.,'Different elements')]")
     private WebElement diffElementsLink;
 
+    public BaseJdiTestingPage(WebDriver driver, WebDriverWait wait) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
+        this.wait = wait;
+    }
+
     public String getPageTitle() {
         return driver.getTitle();
     }
 
 
     public void login() {
-        Properties prop = new Properties();
-        try (InputStream input = new FileInputStream("src/main/resources/config.properties")) {
-            prop.load(input);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
         wait.until(ExpectedConditions.elementToBeClickable(userIcon)).click();
         driver.switchTo().activeElement();
-        wait.until(ExpectedConditions.visibilityOf(nameField)).sendKeys(prop.getProperty("name"));
-        wait.until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(prop.getProperty("password"));
+        wait.until(ExpectedConditions.visibilityOf(nameField)).sendKeys(Utilities.getProperty().getProperty("name"));
+        wait.until(
+            ExpectedConditions.visibilityOf(passwordField)).sendKeys(Utilities.getProperty().getProperty("password"));
         wait.until(ExpectedConditions.elementToBeClickable(loginButton)).click();
     }
 
@@ -103,21 +92,4 @@ public class BaseJdiTestingPage {
         wait.until(ExpectedConditions.elementToBeClickable(diffElementsLink)).click();
     }
 
-    public void assertBrowserTitle(String browserTitle) {
-        softAssertions.assertThat(getPageTitle()).isEqualTo(browserTitle);
-    }
-
-    public void assertUsernameLoggedIn(String userName) {
-        softAssertions.assertThat(getUserName()).isEqualTo(userName);
-    }
-
-    public void assertHeaderSection(int menuTabSize, List<String> properTexts) {
-        softAssertions.assertThat(getMenuTabs().size()).isEqualTo(menuTabSize);
-        softAssertions.assertThat(getMenuTabsTexts()).isEqualTo(properTexts);
-    }
-
-    public void assertLeftMenu(int menuSize, List<String> properTexts) {
-        softAssertions.assertThat(getLeftMenu().size()).isEqualTo(menuSize);
-        softAssertions.assertThat(getLeftMenuTexts()).isEqualTo(properTexts);
-    }
 }
