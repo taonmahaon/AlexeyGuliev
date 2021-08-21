@@ -1,7 +1,7 @@
 package com.epam.tc.hw4.ex2;
 
-import static com.epam.tc.hw3.Constants.LOG_EXPECTED_TEXT;
-import static com.epam.tc.hw3.Constants.URL;
+import static com.epam.tc.hw4.Constants.LOG_EXPECTED_TEXT;
+import static com.epam.tc.hw4.Constants.URL;
 
 import com.epam.tc.hw4.AbstractBaseTest;
 import com.epam.tc.hw4.pages.DifferentElementsPage;
