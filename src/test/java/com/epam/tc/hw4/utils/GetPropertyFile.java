@@ -1,11 +1,11 @@
-package com.epam.tc.hw3.utils;
+package com.epam.tc.hw4.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class Utilities {
+public class GetPropertyFile {
 
     public static Properties getProperty() {
         Properties prop = new Properties();
@@ -18,6 +18,8 @@ public class Utilities {
         }
         return prop;
     }
+
+
 }
 
 

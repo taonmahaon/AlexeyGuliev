@@ -1,8 +1,9 @@
-package com.epam.tc.hw3.steps;
+package com.epam.tc.hw4.steps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.epam.tc.hw3.pages.DifferentElementsPage;
+import com.epam.tc.hw4.pages.DifferentElementsPage;
+import io.qameta.allure.Step;
 import java.util.List;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +23,7 @@ public class DifferentElementsPageSteps {
         this.wait = wait;
     }
 
+    @Step("Assert Log")
     public void assertLog(List<String> expectedKeyWords) {
         List<WebElement> logRows = wait.until(ExpectedConditions.visibilityOfAllElements(
             differentElementsPage.getLogRows()));

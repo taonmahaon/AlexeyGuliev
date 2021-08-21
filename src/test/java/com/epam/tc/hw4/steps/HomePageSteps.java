@@ -1,9 +1,9 @@
-package com.epam.tc.hw3.steps;
+package com.epam.tc.hw4.steps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.epam.tc.hw3.pages.DifferentElementsPage;
-import com.epam.tc.hw3.pages.HomePage;
+import com.epam.tc.hw4.pages.HomePage;
+import io.qameta.allure.Step;
 import java.util.List;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
@@ -19,18 +19,22 @@ public class HomePageSteps {
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Assert Benefit Images")
     public void assertBenefitImages(int numberOfImages) {
         assertThat(homePage.getBenefitImages().size()).isEqualTo(numberOfImages);
     }
 
+    @Step("Assert Benefit Texts")
     public void assertBenefitTexts(List<String> properTexts) {
         assertThat(homePage.getBenefitTexts()).isEqualTo(properTexts);
     }
 
+    @Step("Assert Frame Exist")
     public void assertFrameExist() {
         assertThat((homePage.getFrameCard()).isDisplayed()).isTrue();
     }
 
+    @Step("Assert Frame Button Exist")
     public void assertButtonExist() {
         assertThat(homePage.frameButtonDisplayed()).isTrue();
     }
