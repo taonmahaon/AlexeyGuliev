@@ -1,18 +1,23 @@
-package com.epam.tc.hw3.ex2;
+package com.epam.tc.hw4.ex2;
 
 import static com.epam.tc.hw3.Constants.LOG_EXPECTED_TEXT;
 import static com.epam.tc.hw3.Constants.URL;
 
-import com.epam.tc.hw3.AbstractBaseTest;
-import com.epam.tc.hw3.pages.DifferentElementsPage;
-import com.epam.tc.hw3.pages.HomePage;
-import com.epam.tc.hw3.steps.BaseJdiTestingPageSteps;
-import com.epam.tc.hw3.steps.DifferentElementsPageSteps;
+import com.epam.tc.hw4.AbstractBaseTest;
+import com.epam.tc.hw4.pages.DifferentElementsPage;
+import com.epam.tc.hw4.steps.BaseJdiTestingPageSteps;
+import com.epam.tc.hw4.steps.DifferentElementsPageSteps;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
+@Feature("Different Elements Page")
+@Story("Checking the operation of basic interactive elements")
 public class JdiTestingEx2 extends AbstractBaseTest {
 
-    @Test
+    @Test(description = "Homework_4 Ex2 \"Test with Allure and all this stuff\"")
+    @Description("Assertions that interactive elements works as expected")
     public void interactiveElementsTestEx2() {
 
         final DifferentElementsPage differentElementsPage = new DifferentElementsPage(webDriver, wait);

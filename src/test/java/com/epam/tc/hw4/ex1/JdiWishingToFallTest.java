@@ -1,18 +1,24 @@
-package com.epam.tc.hw3.ex1;
+package com.epam.tc.hw4.ex1;
 
 import static com.epam.tc.hw3.Constants.BENEFIT_EXPECTED_TEXT;
 import static com.epam.tc.hw3.Constants.HEADER_EXPECTED_TEXT;
 import static com.epam.tc.hw3.Constants.SIDEBAR_EXPECTED_TEXTS;
 import static com.epam.tc.hw3.Constants.URL;
 
-import com.epam.tc.hw3.AbstractBaseTest;
-import com.epam.tc.hw3.pages.HomePage;
-import com.epam.tc.hw3.steps.BaseJdiTestingPageSteps;
-import com.epam.tc.hw3.steps.HomePageSteps;
+import com.epam.tc.hw4.AbstractBaseTest;
+import com.epam.tc.hw4.pages.HomePage;
+import com.epam.tc.hw4.steps.BaseJdiTestingPageSteps;
+import com.epam.tc.hw4.steps.HomePageSteps;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
-public class JdiTestingEx1 extends AbstractBaseTest {
-    @Test
+@Feature("Home Page")
+@Story("Checking that chaos is here")
+public class JdiWishingToFallTest extends AbstractBaseTest {
+    @Test(description = "Homework_4 failed test \"Failed test with Allure and all this stuff\"")
+    @Description("Assertion that screenshot in attachment")
     public void softAssertsTestEx1() {
 
         final HomePageSteps homePageSteps = new HomePageSteps(webDriver, wait);
@@ -30,7 +36,7 @@ public class JdiTestingEx1 extends AbstractBaseTest {
         homePage.login();
 
         // 4. Assert Username is logged in
-        baseJdiTestingPageSteps.assertUsernameLoggedIn("ROMAN IOVLEV");
+        baseJdiTestingPageSteps.assertUsernameLoggedIn("ROMAN Ivanov");
 
         // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
         baseJdiTestingPageSteps.assertHeaderSection(4, HEADER_EXPECTED_TEXT);
@@ -52,6 +58,7 @@ public class JdiTestingEx1 extends AbstractBaseTest {
 
         // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
         baseJdiTestingPageSteps.assertLeftMenu(5, SIDEBAR_EXPECTED_TEXTS);
+
 
     }
 }

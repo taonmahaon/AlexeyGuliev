@@ -1,18 +1,24 @@
-package com.epam.tc.hw3.ex1;
+package com.epam.tc.hw4.ex1;
 
 import static com.epam.tc.hw3.Constants.BENEFIT_EXPECTED_TEXT;
 import static com.epam.tc.hw3.Constants.HEADER_EXPECTED_TEXT;
 import static com.epam.tc.hw3.Constants.SIDEBAR_EXPECTED_TEXTS;
 import static com.epam.tc.hw3.Constants.URL;
 
-import com.epam.tc.hw3.AbstractBaseTest;
-import com.epam.tc.hw3.pages.HomePage;
-import com.epam.tc.hw3.steps.BaseJdiTestingPageSteps;
-import com.epam.tc.hw3.steps.HomePageSteps;
+import com.epam.tc.hw4.AbstractBaseTest;
+import com.epam.tc.hw4.pages.HomePage;
+import com.epam.tc.hw4.steps.BaseJdiTestingPageSteps;
+import com.epam.tc.hw4.steps.HomePageSteps;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
+@Feature("Home Page")
+@Story("Checking the operation of homepage components")
 public class JdiTestingEx1 extends AbstractBaseTest {
-    @Test
+    @Test(description = "Homework_4 Ex1 \"Test with Allure and all this stuff\"")
+    @Description("Assertions that homepage works as expected")
     public void softAssertsTestEx1() {
 
         final HomePageSteps homePageSteps = new HomePageSteps(webDriver, wait);
