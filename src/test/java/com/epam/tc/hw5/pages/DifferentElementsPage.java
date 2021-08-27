@@ -1,4 +1,4 @@
-package com.epam.tc.hw4.pages;
+package com.epam.tc.hw5.pages;
 
 import static com.epam.tc.hw4.Constants.LOG_EXPECTED_TEXT;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,8 +39,19 @@ public class DifferentElementsPage extends BaseJdiTestingPage {
         wait.until(ExpectedConditions.elementToBeClickable(windCheckbox)).click();
     }
 
+    public boolean assertCheckboxesChecked() {
+        return waterCheckbox.isSelected() && windCheckbox.isSelected();
+
+    }
+
+
+
     public void selectRadio() {
         wait.until(ExpectedConditions.elementToBeClickable(selenRadio)).click();
+    }
+
+    public boolean assertRadioChecked() {
+        return selenRadio.isSelected();
     }
 
     public void selectInDropdown() {
@@ -49,9 +60,19 @@ public class DifferentElementsPage extends BaseJdiTestingPage {
         wait.until(ExpectedConditions.elementToBeClickable(yellowDropdown)).click();
     }
 
+    public boolean assertYellowDropdownChecked() {
+        return selenRadio.isSelected();
+    }
+
     public List<WebElement> getLogRows() {
         return wait.until(ExpectedConditions.visibilityOfAllElements(logRows));
     }
 
+    public void assertLog() {
+        List<WebElement> logRows = getLogRows();
+        for (int i = 0; i < logRows.size(); i++) {
+            assertThat(logRows.get(i).getText()).contains(LOG_EXPECTED_TEXT.get(i));
+        }
+    }
 
 }
