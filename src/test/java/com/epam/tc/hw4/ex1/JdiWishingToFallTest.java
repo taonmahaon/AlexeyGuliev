@@ -1,9 +1,9 @@
 package com.epam.tc.hw4.ex1;
 
-import static com.epam.tc.hw3.Constants.BENEFIT_EXPECTED_TEXT;
-import static com.epam.tc.hw3.Constants.HEADER_EXPECTED_TEXT;
-import static com.epam.tc.hw3.Constants.SIDEBAR_EXPECTED_TEXTS;
-import static com.epam.tc.hw3.Constants.URL;
+import static com.epam.tc.hw4.Constants.BENEFIT_EXPECTED_TEXT;
+import static com.epam.tc.hw4.Constants.HEADER_EXPECTED_TEXT;
+import static com.epam.tc.hw4.Constants.SIDEBAR_EXPECTED_TEXTS;
+import static com.epam.tc.hw4.Constants.URL;
 
 import com.epam.tc.hw4.AbstractBaseTest;
 import com.epam.tc.hw4.pages.HomePage;
@@ -24,7 +24,6 @@ public class JdiWishingToFallTest extends AbstractBaseTest {
         final HomePageSteps homePageSteps = new HomePageSteps(webDriver, wait);
         final HomePage homePage = new HomePage(webDriver, wait);
         final BaseJdiTestingPageSteps baseJdiTestingPageSteps = new BaseJdiTestingPageSteps(webDriver, wait);
-
 
         // 1. Open test site by URL
         homePage.openSiteByUrl(URL);
@@ -58,7 +57,6 @@ public class JdiWishingToFallTest extends AbstractBaseTest {
 
         // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
         baseJdiTestingPageSteps.assertLeftMenu(5, SIDEBAR_EXPECTED_TEXTS);
-
 
     }
 }
