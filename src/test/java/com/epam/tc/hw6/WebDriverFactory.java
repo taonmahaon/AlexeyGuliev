@@ -34,7 +34,6 @@ public final class WebDriverFactory {
         }
     }
 
-
     /* Local Web Driver creation */
     private static WebDriver createLocalDriver(final String browserName) {
         WebDriver driver;
