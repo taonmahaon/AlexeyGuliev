@@ -26,7 +26,6 @@ public class MetalColorPage extends WebPage {
     public void selectSalad(List<String> salads) {
         saladDropdown.select("Vegetables");
         salads.stream().forEach(salad -> saladDropdown.select(salad));
-
     }
 
     public void selectMetals(String metalSet) {
