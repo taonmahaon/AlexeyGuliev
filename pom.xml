@@ -29,6 +29,8 @@
         <allure.version>2.14.0</allure.version>
         <aspectj.version>1.9.8.M1</aspectj.version>
         <cucumber.version>6.11.0</cucumber.version>
+        <lombok.version>1.18.20</lombok.version>
+        <jdi-light-html.version>1.3.2</jdi-light-html.version>
     </properties>
     <profiles>
         <profile>
@@ -78,11 +80,17 @@
         </profile>
         <profile>
             <id>homeWork6</id>
+            <properties>
+                <suiteFile>src/test/resources/testngHw6.xml</suiteFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>homeWork7</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suiteFile>src/test/resources/testngHw6.xml</suiteFile>
+                <suiteFile>src/test/resources/testngHw7.xml</suiteFile>
             </properties>
         </profile>
     </profiles>
@@ -135,10 +143,14 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
-            <scope>test</scope>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>${jdi-light-html.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
