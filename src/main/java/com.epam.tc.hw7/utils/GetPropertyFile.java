@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class GetPropertyFile {
-
     public static Properties getProperty() {
         Properties prop = new Properties();
         try (
@@ -18,8 +17,6 @@ public class GetPropertyFile {
         }
         return prop;
     }
-
-
 }
 
 

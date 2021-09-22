@@ -25,7 +25,6 @@ public class HomePage extends WebPage {
     @Css(".logout")
     Button logOut;
 
-
     public void logout() {
         signInIcon.click();
         logOut.click();

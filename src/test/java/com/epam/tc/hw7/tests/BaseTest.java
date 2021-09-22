@@ -11,8 +11,7 @@ import com.epam.tc.hw7.sites.JdiTestingSite;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-public class AbstractBaseTest {
-
+public class BaseTest {
     @BeforeSuite(alwaysRun = true)
     public void setUp() {
         initSite(JdiTestingSite.class);
