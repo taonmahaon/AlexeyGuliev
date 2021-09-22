@@ -11,9 +11,9 @@ import com.epam.tc.hw7.utils.DataProvider;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
-public class TestSubmitMetalsColorsData extends BaseTest {
+public class TestSubmitMetalsColors extends BaseTest {
     @Test(dataProvider = "provideTestData", dataProviderClass = DataProvider.class)
-    public void jdiTestEx1(MetalColor testData) {
+    public void testMetalColorSet(MetalColor testData) {
         headerMenu.select("Metals & Colors");
         metalColorPage.checkOpened();
         metalColorForm.submit(testData);
