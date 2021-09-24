@@ -17,7 +17,6 @@
 
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <suiteFile>src/main/resources/allTests.xml</suiteFile>
-        <testng.version>7.4.0</testng.version>
         <calculator.version>1.0</calculator.version>
         <assertj-core.version>3.20.2</assertj-core.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
@@ -29,13 +28,14 @@
         <allure.version>2.14.0</allure.version>
         <aspectj.version>1.9.8.M1</aspectj.version>
         <cucumber.version>6.11.0</cucumber.version>
+        <lombok.version>1.18.20</lombok.version>
+        <jdi-light-html.version>1.3.2</jdi-light-html.version>
+        <testng.version>7.4.0</testng.version>
+        <rest-assured.version>4.4.0</rest-assured.version>
     </properties>
     <profiles>
         <profile>
             <id>defaultAddSubProfile</id>
-<!--            <activation>-->
-<!--                <activeByDefault>true</activeByDefault>-->
-<!--            </activation>-->
             <properties>
             <suiteFile>src/test/resources/addSub.xml</suiteFile>
             </properties>
@@ -78,11 +78,29 @@
         </profile>
         <profile>
             <id>homeWork6</id>
+            <properties>
+                <suiteFile>src/test/resources/testngHw6.xml</suiteFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>homeWork7</id>
+            <properties>
+                <suiteFile>src/test/resources/testngHw7.xml</suiteFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>homeWork9</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suiteFile>src/test/resources/testngHw6.xml</suiteFile>
+                <suiteFile>src/test/resources/testngHw9.xml</suiteFile>
+            </properties>
+        </profile>
+        <profile>
+            <id>homeWork10</id>
+            <properties>
+                <suiteFile>src/test/resources/testngHw10.xml</suiteFile>
             </properties>
         </profile>
     </profiles>
@@ -94,12 +112,6 @@
             <version>${calculator.version}</version>
             <scope>system</scope>
             <systemPath>${basedir}/src/test/resources/calculator-1.0.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -135,8 +147,25 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
-            <scope>test</scope>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>${jdi-light-html.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
