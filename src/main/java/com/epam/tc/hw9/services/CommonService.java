@@ -1,6 +1,5 @@
 package com.epam.tc.hw9.services;
 
-import static com.epam.tc.hw9.constans.Constants.BASE_URL;
 import static io.restassured.RestAssured.given;
 
 import com.epam.tc.hw9.utils.GetPropertyFile;
@@ -16,9 +15,12 @@ public class CommonService {
     public CommonService() {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         requestSpecification = new RequestSpecBuilder()
-            .setBaseUri(BASE_URL)
-            .addQueryParam("key", (GetPropertyFile.getProperty().getProperty("key")))
-            .addQueryParam("token", (GetPropertyFile.getProperty().getProperty("token")))
+            .setBaseUri(GetPropertyFile.getProperty("src/test/resources/testHw9.properties")
+                                        .getProperty("BASE_URL"))
+            .addQueryParam("key", (GetPropertyFile.getProperty("src/test/resources/testHw10.properties")
+                                                  .getProperty("key")))
+            .addQueryParam("token", (GetPropertyFile.getProperty("src/test/resources/testHw10.properties")
+                                                    .getProperty("token")))
             .build();
     }
 

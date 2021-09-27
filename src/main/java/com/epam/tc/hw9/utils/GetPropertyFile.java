@@ -7,10 +7,10 @@ import java.util.Properties;
 
 public class GetPropertyFile {
 
-    public static Properties getProperty() {
+    public static Properties getProperty(String path) {
         Properties prop = new Properties();
         try (
-            InputStream input = new FileInputStream("src/test/resources/testHw10.properties")) {
+            InputStream input = new FileInputStream(path)) {
             prop.load(input);
         } catch (IOException ex) {
             ex.printStackTrace();
