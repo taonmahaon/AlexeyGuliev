@@ -15,11 +15,11 @@ public class CommonService {
     public CommonService() {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         requestSpecification = new RequestSpecBuilder()
-            .setBaseUri(GetPropertyFile.getProperty("src/test/resources/testHw9.properties")
+            .setBaseUri(GetPropertyFile.getProperty()
                                         .getProperty("BASE_URL"))
-            .addQueryParam("key", (GetPropertyFile.getProperty("src/test/resources/testHw10.properties")
+            .addQueryParam("key", (GetPropertyFile.getProperty()
                                                   .getProperty("key")))
-            .addQueryParam("token", (GetPropertyFile.getProperty("src/test/resources/testHw10.properties")
+            .addQueryParam("token", (GetPropertyFile.getProperty()
                                                     .getProperty("token")))
             .build();
     }

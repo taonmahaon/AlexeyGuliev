@@ -1,5 +1,7 @@
 package com.epam.tc.hw9.services;
 
+import static com.epam.tc.hw9.constans.Constants.DEFAULT_BOARD_NAME;
+import static com.epam.tc.hw9.constans.Constants.DEFAULT_LIST_NAME;
 import static com.epam.tc.hw9.constans.Endpoints.BOARDS;
 import static com.epam.tc.hw9.constans.Endpoints.GET_BOARD;
 import static com.epam.tc.hw9.constans.Endpoints.GET_LIST;
@@ -13,16 +15,20 @@ import java.util.Map;
 
 public class RestTrelloService extends CommonService {
     public BoardDTO createNewBoard(Map<String, String> params) {
-        params.put("name", (GetPropertyFile.getProperty("src/test/resources/testHw9.properties")
-                                           .getProperty("DEFAULT_BOARD_NAME")));
+        params.put("name", DEFAULT_BOARD_NAME);
         return postWithParams(BOARDS, params).as(BoardDTO.class);
     }
 
     public ListDTO createNewList(Map<String, String> params, BoardDTO boardDTO) {
-        params.put("name", (GetPropertyFile.getProperty("src/test/resources/testHw9.properties")
-                                           .getProperty("DEFAULT_LIST_NAME")));
+        params.put("name", DEFAULT_LIST_NAME);
         params.put("idBoard", boardDTO.getId());
-        return postWithParams(LISTS, params).as(ListDTO.class);
+        return createNewListResponse(params, boardDTO).as(ListDTO.class);
+    }
+
+    public Response createNewListResponse(Map<String, String> params, BoardDTO boardDTO) {
+        params.put("name", DEFAULT_LIST_NAME);
+        params.put("idBoard", boardDTO.getId());
+        return postWithParams(LISTS, params);
     }
 
     public BoardDTO getBoard(String boardId) {
