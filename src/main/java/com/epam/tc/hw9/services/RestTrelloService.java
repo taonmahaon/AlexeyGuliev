@@ -1,7 +1,5 @@
 package com.epam.tc.hw9.services;
 
-import static com.epam.tc.hw9.constans.Constants.DEFAULT_BOARD_NAME;
-import static com.epam.tc.hw9.constans.Constants.DEFAULT_LIST_NAME;
 import static com.epam.tc.hw9.constans.Endpoints.BOARDS;
 import static com.epam.tc.hw9.constans.Endpoints.GET_BOARD;
 import static com.epam.tc.hw9.constans.Endpoints.GET_LIST;
@@ -9,7 +7,6 @@ import static com.epam.tc.hw9.constans.Endpoints.LISTS;
 
 import com.epam.tc.hw9.dto.board.BoardDTO;
 import com.epam.tc.hw9.dto.list.ListDTO;
-import com.epam.tc.hw9.utils.GetPropertyFile;
 import io.restassured.response.Response;
 import java.util.HashMap;
 import java.util.Map;
