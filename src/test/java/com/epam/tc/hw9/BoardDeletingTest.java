@@ -1,15 +1,12 @@
 package com.epam.tc.hw9;
 
-import java.util.HashMap;
-import java.util.Map;
 import org.testng.annotations.Test;
 
 public class BoardDeletingTest extends SetUp {
-    public Map<String, String> params = new HashMap<>();
 
-    @Test()
-    public void boardDeleting() {
-        boardDTO = restTrelloService.createNewBoard(params);
+    @Test(dataProvider = "testData", dataProviderClass = TestData.class)
+    public void boardDeleting(String name) {
+        boardDTO = restTrelloService.createNewBoard(name);
         response = restTrelloService.deleteBoard(boardDTO.getId());
         boardAssertions.boardDeleted(response);
     }

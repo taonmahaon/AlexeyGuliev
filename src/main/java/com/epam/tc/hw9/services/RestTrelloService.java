@@ -11,22 +11,23 @@ import com.epam.tc.hw9.dto.board.BoardDTO;
 import com.epam.tc.hw9.dto.list.ListDTO;
 import com.epam.tc.hw9.utils.GetPropertyFile;
 import io.restassured.response.Response;
+import java.util.HashMap;
 import java.util.Map;
 
 public class RestTrelloService extends CommonService {
-    public BoardDTO createNewBoard(Map<String, String> params) {
-        params.put("name", DEFAULT_BOARD_NAME);
+    public BoardDTO createNewBoard(String boardName) {
+        Map<String, String> params = new HashMap<>();
+        params.put("name", boardName);
         return postWithParams(BOARDS, params).as(BoardDTO.class);
     }
 
-    public ListDTO createNewList(Map<String, String> params, BoardDTO boardDTO) {
-        params.put("name", DEFAULT_LIST_NAME);
-        params.put("idBoard", boardDTO.getId());
-        return createNewListResponse(params, boardDTO).as(ListDTO.class);
+    public ListDTO createNewList(String listName, BoardDTO boardDTO) {
+        return createNewListResponse(listName, boardDTO).as(ListDTO.class);
     }
 
-    public Response createNewListResponse(Map<String, String> params, BoardDTO boardDTO) {
-        params.put("name", DEFAULT_LIST_NAME);
+    public Response createNewListResponse(String listName, BoardDTO boardDTO) {
+        Map<String, String> params = new HashMap<>();
+        params.put("name", listName);
         params.put("idBoard", boardDTO.getId());
         return postWithParams(LISTS, params);
     }
@@ -38,11 +39,6 @@ public class RestTrelloService extends CommonService {
 
     public Response getListResponse(String listId) {
         return getNoParams(String.format(GET_LIST, listId));
-    }
-
-    public ListDTO getList(String listId) {
-        return getListResponse(listId)
-                .getBody().as(ListDTO.class);
     }
 
     public Response deleteBoard(String boardId) {

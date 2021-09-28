@@ -6,7 +6,8 @@ import com.epam.tc.hw9.dto.board.BoardDTO;
 import com.epam.tc.hw9.dto.list.ListDTO;
 import com.epam.tc.hw9.services.RestTrelloService;
 import io.restassured.response.Response;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 public class SetUp {
     protected BoardDTO boardDTO;
@@ -16,7 +17,7 @@ public class SetUp {
     protected ListAssertions listAssertions;
     protected Response response;
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp() {
         boardDTO = new BoardDTO();
         listDTO = new ListDTO();
@@ -24,4 +25,10 @@ public class SetUp {
         listAssertions = new ListAssertions();
         restTrelloService = new RestTrelloService();
     }
+
+    @AfterMethod
+    public void tearDown() {
+        restTrelloService.deleteBoard(boardDTO.getId());
+    }
 }
+
